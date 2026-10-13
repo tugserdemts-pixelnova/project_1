@@ -1,0 +1,49 @@
+:root {
+  --bg: #eef3f7; --card: #ffffff; --ink: #1c2b39; --muted: #6b7c8c;
+  --line: #d5dfe8; --accent: #1f7a6d; --accent-ink: #ffffff; --danger: #b3412f;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101a23; --card: #172431; --ink: #e6eef5; --muted: #8fa1b2;
+    --line: #26394a; --accent: #4cc2b0; --accent-ink: #08241f; --danger: #ef8a77;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #101a23; --card: #172431; --ink: #e6eef5; --muted: #8fa1b2;
+  --line: #26394a; --accent: #4cc2b0; --accent-ink: #08241f; --danger: #ef8a77;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+  display: flex; justify-content: center; padding: 32px 16px;
+}
+main { width: 100%; max-width: 480px; }
+h1 { font-size: 1.9rem; margin: 0 0 4px; letter-spacing: -0.02em; }
+.sub { color: var(--muted); margin: 0 0 20px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+form { display: flex; gap: 8px; }
+input[type="text"] {
+  flex: 1; min-width: 0; padding: 12px 14px; font: inherit; color: var(--ink);
+  background: var(--bg); border: 1px solid var(--line); border-radius: 10px;
+}
+button {
+  font: inherit; cursor: pointer; border: 1px solid var(--line); border-radius: 10px;
+  background: transparent; color: var(--ink); padding: 8px 12px;
+}
+button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 700; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.filters { display: flex; gap: 6px; margin: 16px 0 8px; }
+.filters button[aria-pressed="true"] { background: var(--ink); color: var(--card); border-color: var(--ink); }
+ul { list-style: none; margin: 0; padding: 0; }
+li { display: flex; align-items: center; gap: 10px; padding: 10px 2px; border-bottom: 1px solid var(--line); }
+li:last-child { border-bottom: 0; }
+li input { width: 20px; height: 20px; accent-color: var(--accent); flex: none; }
+li span { flex: 1; overflow-wrap: anywhere; }
+li.done span { text-decoration: line-through; color: var(--muted); }
+li .del { color: var(--danger); padding: 4px 9px; }
+.empty { color: var(--muted); text-align: center; padding: 18px 0; }
+.foot { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; color: var(--muted); font-size: 0.9rem; }
